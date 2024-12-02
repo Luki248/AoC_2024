@@ -3,7 +3,7 @@
 # https://adventofcode.com/2024/day/1
 
 
-file = open("input.txt", "r")
+file = open("./Day_01/input.txt", "r")
 input = file.readlines()
 
 numbers1 = []
