@@ -2,8 +2,6 @@
 # Day 6
 # https://adventofcode.com/2024/day/6
 
-import math
-
 file = open("./Day_06/input.txt", "r")
 input = file.readlines()
 
