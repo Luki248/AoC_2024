@@ -46,4 +46,31 @@ for i in range(len(is_eq_correct)):
 print("First Puzzle:", sum)
 
 
-print("Second Puzzle:")
+def calc_res2(nums):
+    if len(nums) < 3:
+        return nums[0] + nums[1], nums[0] * nums[1], int(str(nums[0]) + str(nums[1]))
+    else:
+        ret = calc_res2(nums[0:-1])
+        calculations = []
+        for res in ret:
+            calculations.append(nums[-1] + res)
+            calculations.append(nums[-1] * res)
+            calculations.append(int(str(res) + str(nums[-1])))
+        return calculations
+
+is_eq_correct2 = []
+for i in range(len(numbers)):
+    number_of_results = pow(3, len(numbers[i]) - 1)
+    eq_results = calc_res2(numbers[i])
+
+    is_equation_correct = False
+    for res in eq_results:
+        if res == results[i]:
+            is_equation_correct = True
+    is_eq_correct2.append(is_equation_correct)
+
+sum2 = 0
+for i in range(len(is_eq_correct2)):
+    if is_eq_correct2[i]:
+        sum2 += results[i]
+print("Second Puzzle:", sum2)
