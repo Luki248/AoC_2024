@@ -57,4 +57,4 @@ for cell in memory3:
     if cell[1] != ".":
         checksum2 += i * cell[1]
     i += 1
-print("Second Puzzle:")
+print("Second Puzzle:", checksum2)
