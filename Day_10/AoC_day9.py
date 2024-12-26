@@ -24,28 +24,41 @@ def find_zeros():
 zeros = find_zeros()
 
 def find_next_trail(pos):
-    if mountain[pos[0]][pos[0]] == 9:
-        return pos
+    if mountain[pos[0]][pos[1]] == 9:
+        return [pos, "."]
     
-    trails = []
+    trails = [pos]
     if pos[0] < len(mountain) - 1:
         if mountain[pos[0] + 1][pos[1]] == mountain[pos[0]][pos[1]] + 1:
-            trails.append([pos, find_next_trail([pos[0]+1, pos[1]])])
-    if pos[0] > 1:
+            temp = find_next_trail([pos[0]+1, pos[1]])      # go down
+            trails.append(temp)
+            #for temp_pos in temp:
+            #    trails.append(temp_pos)
+    if pos[0] > 0:
         if mountain[pos[0] - 1][pos[1]] == mountain[pos[0]][pos[1]] + 1:
-            trails.append([pos, find_next_trail([pos[0]-1, pos[1]])])
+            temp = find_next_trail([pos[0]-1, pos[1]])      # go up
+            trails.append(temp)
+            #for temp_pos in temp:
+            #    trails.append(temp_pos)
     if pos[1] < len(mountain[0]) - 1:
         if mountain[pos[0]][pos[1] + 1] == mountain[pos[0]][pos[1]] + 1:
-            trails.append([pos, find_next_trail([pos[0], pos[1]+1])])
-    if pos[1] > 1:
+            temp = find_next_trail([pos[0], pos[1]+1])      # go right
+            trails.append(temp)
+            #for temp_pos in temp:
+            #    trails.append(temp_pos)
+    if pos[1] > 0:
         if mountain[pos[0]][pos[1] - 1] == mountain[pos[0]][pos[1]] + 1:
-            trails.append([pos, find_next_trail([pos[0], pos[1]-1])])
+            temp = find_next_trail([pos[0], pos[1]-1])      # go left
+            trails.append(temp)
+            #for temp_pos in temp:
+            #    trails.append(temp_pos)
 
     return trails
 
 trails = []
 for zero in zeros:
     trails.append(find_next_trail(zero))
+
 
 print("First Puzzle:")
 
